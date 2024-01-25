@@ -40,7 +40,7 @@ jobs:
         
    # AWS 인증
     - name: configure aws credentials
-      uses: aws-actions/configure-aws-credentials@v1
+      uses: aws-actions/configure-aws-credentials@master
       with:
         role-to-assume: arn:aws:iam::262359786847:role/git-action-role
         aws-region: ap-northeast-2
