@@ -39,9 +39,8 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.AWS_HOST }}
-        username: ${{ secrets.AWS_USERNAME }}
-        key: ${{ secrets.PRIVATE_KEY }}
+        username: ${{ secrets.AWS_USER_NAME }}
+        key: ${{ secrets.AWS_PRIVATE_KEY }}
         port: 22
         script: |
-          whoami
-          git pull origin master
+          whoami       
