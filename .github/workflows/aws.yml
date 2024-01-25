@@ -29,22 +29,19 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions: 
-      id-token: write
-      contents: read
 
     steps:
     - name: Checkout Src
       uses: actions/checkout@v3
         
-   # AWS 인증
-    - name: configure aws credentials
-      uses: aws-actions/configure-aws-credentials@v1
+    # ssh 접속  
+    - name: Deploy
+      uses: appleboy/ssh-action@master
       with:
-        role-to-assume: arn:aws:iam::262359786847:role/git-action-role
-        aws-region: ap-northeast-2
-
-    # AWS ECR 로그인
-    - name: Login to Amazon ECR
-      id: login-ecr
-      uses: aws-actions/amazon-ecr-login@v1
+        host: ${{ secrets.AWS_HOST }}
+        username: ${{ secrets.AWS_USERNAME }}
+        key: ${{ secrets.PRIVATE_KEY }}
+        port: 22
+        script: |
+          whoami
+          git pull origin master
