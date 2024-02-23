@@ -45,8 +45,8 @@ jobs:
         script: |          
            cd ~/youtube-s1
            git pull origin master
-           pip install -r requirements.txt
-           nohup streamlit run main.py
+           pip install -r requirements.txt           
            cd ~
+           ./deploy.sh
 
            
