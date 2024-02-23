@@ -46,6 +46,9 @@ jobs:
            cd ~/youtube-s1
            git pull origin master
            pip install -r requirements.txt           
-           nohup streamlit run ~/youtube-s1/main.py > log.out 2>err.out &
+           cd ~
+           ./streamlit-stop.sh
+           sleep 3
+           ./streamlit-start.sh
 
            
